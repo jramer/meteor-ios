@@ -263,9 +263,11 @@ NSString * const METDDPClientDidChangeAccountNotification = @"METDDPClientDidCha
 
 - (void)networkReachabilityManager:(METNetworkReachabilityManager *)reachabilityManager didDetectReachabilityStatusChange:(METNetworkReachabilityStatus)reachabilityStatus {
   
-  if (reachabilityStatus == METNetworkReachabilityStatusReachable && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
-    [self connect];
-  }
+  dispatch_async(dispatch_get_main_queue(), ^(void){
+    if (reachabilityStatus == METNetworkReachabilityStatusReachable && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+      [self connect];
+    }
+  });
 }
 
 #pragma mark - Message Handling
