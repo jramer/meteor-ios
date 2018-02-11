@@ -46,7 +46,7 @@ NSString * const METDDPClientDidChangeAccountNotification = @"METDDPClientDidCha
 
 @interface METDDPClient ()
 
-@property (nonatomic, copy) void (^pendingLoginResumeHandler)();
+@property (nonatomic, copy) void (^pendingLoginResumeHandler)(void);
 
 @end
 

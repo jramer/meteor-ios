@@ -22,13 +22,13 @@
 
 @implementation METTimer {
   dispatch_queue_t _queue;
-  void (^_block)();
+  void (^_block)(void);
   
   dispatch_source_t _timer_source;
   BOOL _started;
 }
 
-- (instancetype)initWithQueue:(dispatch_queue_t)queue block:(void (^)())block {
+- (instancetype)initWithQueue:(dispatch_queue_t)queue block:(void (^)(void))block {
   self = [super init];
   if (self) {
     _queue = queue;

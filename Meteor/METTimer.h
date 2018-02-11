@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface METTimer : NSObject
 
-- (instancetype)initWithQueue:(dispatch_queue_t)queue block:(void (^)())block NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithQueue:(dispatch_queue_t)queue block:(void (^)(void))block NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
 
 @property (assign, nonatomic) NSTimeInterval tolerance;

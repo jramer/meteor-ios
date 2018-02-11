@@ -17,6 +17,8 @@ Pod::Spec.new do |s|
   s.public_header_files = `./scripts/find_headers.rb --project Meteor --target "Meteor iOS" --public`.split("\n")
   s.private_header_files = `./scripts/find_headers.rb --project Meteor --target "Meteor iOS" --private`.split("\n")
 
+  s.user_target_xcconfig = { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES' }
+
 	s.frameworks = 'CoreData'
 
   s.dependency 'PocketSocket'

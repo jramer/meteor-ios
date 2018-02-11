@@ -48,11 +48,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didReceiveResult:(id)result error:(NSError *)error forMethodID:(NSString *)methodID;
 - (void)didReceiveUpdatesDoneForMethodID:(NSString *)methodID;
 
-- (void)resetWhileAddingMethodInvocationsToTheFrontOfTheQueueUsingBlock:(void (^)())block;
+- (void)resetWhileAddingMethodInvocationsToTheFrontOfTheQueueUsingBlock:(void (^)(void))block;
 
 - (BOOL)applyDataUpdate:(METDataUpdate *)update;
 
-- (void)performAfterAllCurrentlyBufferedDocumentsAreFlushed:(void (^)())block;
+- (void)performAfterAllCurrentlyBufferedDocumentsAreFlushed:(void (^)(void))block;
 
 @end
 

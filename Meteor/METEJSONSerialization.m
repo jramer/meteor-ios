@@ -24,7 +24,7 @@ NSString * const METEJSONSerializationErrorDomain = @"com.meteor.EJSONSerializat
 
 @implementation METEJSONSerialization
 
-+ (id)objectFromEJSONObject:(id)EJSONObject error:(NSError **)error {
++ (id)objectFromEJSONObject:(id)EJSONObject error:(inout NSError * __autoreleasing *)error {
   if ([EJSONObject isKindOfClass:[NSDictionary class]]) {
     if ([EJSONObject count] == 1) {
       id key = [[EJSONObject keyEnumerator] nextObject];
@@ -77,7 +77,7 @@ NSString * const METEJSONSerializationErrorDomain = @"com.meteor.EJSONSerializat
   }
 }
 
-+ (id)EJSONObjectFromObject:(id)object error:(NSError **)error {
++ (id)EJSONObjectFromObject:(id)object error:(NSError * __autoreleasing *)error {
   if ([object isKindOfClass:[NSDate class]]) {
     return @{@"$date": @(floor([object timeIntervalSince1970] * 1000.0))};
   } else if ([object isKindOfClass:[NSData class]]) {

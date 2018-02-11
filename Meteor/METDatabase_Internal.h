@@ -32,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)flushDataUpdates;
 @property (assign, nonatomic, getter=isWaitingForQuiescence) BOOL waitingForQuiescence;
 
-- (METDatabaseChanges *)performUpdatesAndReturnChanges:(void (^)())block;
+- (METDatabaseChanges *)performUpdatesAndReturnChanges:(void (^)(void))block;
 - (void)performUpdatesInLocalCache:(void (^)(METDocumentCache *localCache))block;
 - (void)performUpdatesInLocalCacheWithoutTrackingChanges:(void (^)(METDocumentCache *localCache))block;
 
-- (void)performAfterBufferedUpdatesAreFlushed:(void (^)())block;
+- (void)performAfterBufferedUpdatesAreFlushed:(void (^)(void))block;
 
 - (void)reset;
 

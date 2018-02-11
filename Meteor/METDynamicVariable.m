@@ -28,7 +28,7 @@
   return _currentValue;
 }
 
-- (void)performBlock:(void (^)())block withValue:(id)value {
+- (void)performBlock:(void (^)(void))block withValue:(id)value {
   id originalValue = _currentValue;
   _currentValue = value;
   block();

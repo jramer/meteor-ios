@@ -230,7 +230,7 @@
   }
 }
 
-- (void)performAfterAllCurrentlyBufferedDocumentsAreFlushed:(void (^)())block {
+- (void)performAfterAllCurrentlyBufferedDocumentsAreFlushed:(void (^)(void))block {
   @synchronized(self) {    
     if (_bufferedDocumentsByKey.count < 1) {
       [_client.database performAfterBufferedUpdatesAreFlushed:block];
@@ -247,7 +247,7 @@
   }
 }
 
-- (void)resetWhileAddingMethodInvocationsToTheFrontOfTheQueueUsingBlock:(void (^)())block {
+- (void)resetWhileAddingMethodInvocationsToTheFrontOfTheQueueUsingBlock:(void (^)(void))block {
   @synchronized(self) {
     NSArray *methodInvocations = [_operationQueue.operations copy];
     [_operationQueue cancelAllOperations];

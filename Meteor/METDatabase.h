@@ -41,7 +41,7 @@ extern NSString * const METDatabaseChangesKey;
 - (NSArray *)executeFetchRequest:(METFetchRequest *)fetchRequest;
 - (METDocument *)documentWithKey:(METDocumentKey *)documentKey;
 
-- (void)performUpdates:(void (^)())block;
+- (void)performUpdates:(void (^)(void))block;
 
 - (void)enumerateCollectionsUsingBlock:(void (^)(METCollection *collection, BOOL *stop))block;
 - (METCollection *)collectionWithName:(NSString *)collectionName;

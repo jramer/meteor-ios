@@ -149,7 +149,7 @@ NSString * const METDatabaseChangesKey = @"METDatabaseChangesKey";
   }
 }
 
-- (void)performAfterBufferedUpdatesAreFlushed:(void (^)())block {
+- (void)performAfterBufferedUpdatesAreFlushed:(void (^)(void))block {
   dispatch_async(_dataUpdatesQueue, ^{
     if (_bufferedDataUpdates.count > 0) {
       dispatch_block_t existingPendingAfterFlushBlock = _pendingAfterFlushBlock;
@@ -178,7 +178,7 @@ NSString * const METDatabaseChangesKey = @"METDatabaseChangesKey";
   }
 }
 
-- (void)performUpdates:(void (^)())block {
+- (void)performUpdates:(void (^)(void))block {
   [_writeLock lock];
   _writeLockRecursionCount++;
   
@@ -192,7 +192,7 @@ NSString * const METDatabaseChangesKey = @"METDatabaseChangesKey";
   [_writeLock unlock];
 }
 
-- (METDatabaseChanges *)performUpdatesAndReturnChanges:(void (^)())block {
+- (METDatabaseChanges *)performUpdatesAndReturnChanges:(void (^)(void))block {
   NSAssert(_currentChanges == nil, @"performUpdatesAndReturnChanges: is not reentrant");
   
   METDatabaseChanges *changes = [[METDatabaseChanges alloc] init];

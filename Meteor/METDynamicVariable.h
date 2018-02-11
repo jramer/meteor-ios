@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface METDynamicVariable : NSObject
 
 - (id)currentValue;
-- (void)performBlock:(void (^)())block withValue:(id)value;
+- (void)performBlock:(void (^)(void))block withValue:(id)value;
 
 @end
 
